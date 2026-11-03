@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Student Dashboard | Career Compass</title>
+  <link rel="stylesheet" href="css/style.css?v=5">
+</head>
+<body>
+<nav class="navbar">
+  <a class="logo" href="index.html?v=5">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor"></polygon>
+    </svg>
+    Career Compass
+  </a>
+  <div class="nav-links">
+    <a href="index.html?v=5">Home</a>
+    <a href="chatbot.html?v=5">AI Chat</a>
+    <a href="assessment.html?v=5">Assessment</a>
+    <a href="careers.html?v=5">Careers</a>
+    <a class="active" href="dashboard.html?v=5">Dashboard</a>
+  </div>
+  <a class="nav-user-chip" id="navUserChip" href="dashboard.html?v=5" title="View your dashboard">
+    <div class="nav-user-avatar" id="navAvatar">A</div>
+    <span class="nav-user-name" id="navName">Alex</span>
+  </a>
+</nav>
+
+<main class="dashboard section">
+  <div class="dash-welcome">
+    <div>
+      <div class="eyebrow">Personalized Overview</div>
+      <h1>Welcome back, <span id="welcomeName">Alex</span></h1>
+      <p>Here is your current career alignment, assessment insights, and recommended progression.</p>
+    </div>
+    <button class="profile-chip" id="editProfileBtn" type="button">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+      </svg>
+      Edit Student Profile
+    </button>
+  </div>
+
+  <div class="dash-grid">
+    <!-- Student Profile Card -->
+    <div class="dash-card profile-card">
+      <div class="avatar-large" id="profileAvatar">A</div>
+      <h2 id="profileFullName">Alex Rivera</h2>
+      <p id="profileDegree">Computer Science & Engineering</p>
+      <p style="font-size: 12px; color: var(--muted-light); margin-top: 2px;" id="profileYear">3rd Year Undergraduate</p>
+      
+      <div class="profile-tags" id="profileSkillTags">
+        <span>Software Engineering</span>
+        <span>Machine Learning</span>
+        <span>System Design</span>
+      </div>
+
+      <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border);">
+        <a href="assessment.html" class="next-card-link" style="justify-content: center;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          <span id="assessmentActionText">Retake Assessment</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Career Match Card -->
+    <div class="dash-card">
+      <div class="card-title">
+        <h3>Top Career Alignment</h3>
+        <span id="matchCategory">AI & Technology</span>
+      </div>
+
+      <div class="match">
+        <div class="match-score" id="matchScore">92%</div>
+        <div>
+          <h2 id="matchTitle">AI / ML Engineer</h2>
+          <p id="matchDesc">Exceptional match based on your recent discovery assessment.</p>
+        </div>
+      </div>
+
+      <div class="meter"><span id="matchMeterBar" style="width: 92%"></span></div>
+
+      <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 16px;">
+        <span style="font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase;">Secondary Match:</span>
+        <div style="font-size: 13px; font-weight: 700; color: var(--navy); margin-top: 2px;" id="secondaryMatchText">Data Scientist (84% alignment)</div>
+      </div>
+
+      <div style="margin-top: auto;">
+        <a id="discussCareerBtn" href="chatbot.html?career=AI+%2F+ML+Engineer" class="btn btn-small" style="width: 100%;">
+          Consult AI About This Path
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Aptitude Dimensions -->
+    <div class="dash-card">
+      <div class="card-title">
+        <h3>Dimension Breakdown</h3>
+        <span>Aptitude</span>
+      </div>
+
+      <div class="progress-list" id="dimensionsList">
+        <div><span>Technology & AI</span><b id="scoreTech">92%</b></div>
+        <div class="meter"><span id="meterTech" style="width: 92%"></span></div>
+
+        <div><span>Data Science</span><b id="scoreData">84%</b></div>
+        <div class="meter"><span id="meterData" style="width: 84%"></span></div>
+
+        <div><span>UI/UX & Design</span><b id="scoreDesign">65%</b></div>
+        <div class="meter"><span id="meterDesign" style="width: 65%"></span></div>
+
+        <div><span>Product Strategy</span><b id="scoreBusiness">58%</b></div>
+        <div class="meter"><span id="meterBusiness" style="width: 58%"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recommended Next Steps -->
+  <div class="dash-section">
+    <div class="section-heading">
+      <div>
+        <div class="eyebrow">Action Plan</div>
+        <h2>Recommended next milestones</h2>
+      </div>
+    </div>
+
+    <div class="next-grid">
+      <div class="next-card">
+        <div class="next-card-top">
+          <span class="next-card-num">01</span>
+          <span class="career-level" id="step1Status">Active</span>
+        </div>
+        <h3 id="step1Title">Review Learning Roadmap</h3>
+        <p id="step1Desc">Explore fundamental competencies and framework requirements for your matched career.</p>
+        <a id="step1Link" href="chatbot.html?query=Can+you+give+me+a+detailed+learning+roadmap+for+my+matched+career%3F" class="next-card-link">
+          Open In AI Chat →
+        </a>
+      </div>
+
+      <div class="next-card">
+        <div class="next-card-top">
+          <span class="next-card-num">02</span>
+          <span class="career-level">Available</span>
+        </div>
+        <h3>Explore Industry Roles</h3>
+        <p>Compare requirements, daily responsibilities, and compensation benchmarks across peer domains.</p>
+        <a href="careers.html" class="next-card-link">
+          Browse Career Catalog →
+        </a>
+      </div>
+
+      <div class="next-card">
+        <div class="next-card-top">
+          <span class="next-card-num">03</span>
+          <span class="career-level">Interactive</span>
+        </div>
+        <h3>Simulate Career Interview</h3>
+        <p>Ask Career Compass AI to test your knowledge with mock entry-level interview questions.</p>
+        <a href="chatbot.html?query=Can+you+conduct+a+short+technical+mock+interview+for+an+entry-level+AI+Engineer+role%3F" class="next-card-link">
+          Start AI Mock Interview →
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Edit Profile Modal -->
+<div class="modal-overlay" id="profileModal">
+  <div class="modal-card">
+    <h3>Edit Student Profile</h3>
+    <p>Update your academic details to receive personalized career matches and guidance.</p>
+    
+    <div class="form-group">
+      <label for="inputStudentName">Full Name</label>
+      <input type="text" id="inputStudentName" placeholder="e.g. Alex Rivera">
+    </div>
+
+    <div class="form-group">
+      <label for="inputStudentDegree">Degree / Major</label>
+      <input type="text" id="inputStudentDegree" placeholder="e.g. B.Tech Computer Science">
+    </div>
+
+    <div class="form-group">
+      <label for="inputStudentYear">Academic Standing</label>
+      <select id="inputStudentYear">
+        <option value="1st Year Undergraduate">1st Year Undergraduate</option>
+        <option value="2nd Year Undergraduate">2nd Year Undergraduate</option>
+        <option value="3rd Year Undergraduate">3rd Year Undergraduate</option>
+        <option value="Final Year / Senior">Final Year / Senior</option>
+        <option value="Master's / Postgraduate">Master's / Postgraduate</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="inputStudentGoal">Primary Career Goal</label>
+      <input type="text" id="inputStudentGoal" placeholder="e.g. Machine Learning & Cloud Architecture">
+    </div>
+
+    <div class="modal-btns">
+      <button class="btn btn-outline btn-small" type="button" data-close-modal>Cancel</button>
+      <button class="btn btn-small" id="saveProfileBtn" type="button">Save Profile</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js?v=5"></script>
+<script>
+function renderDashboard() {
+  const profile = getUserProfile();
+  const degree = profile.degree || profile.major || "Computer Science & Engineering";
+  const assessment = getAssessmentResult();
+
+  // Populate Profile
+  const firstName = (profile.name || "Student").split(" ")[0];
+  document.getElementById("welcomeName").textContent = firstName;
+  document.getElementById("profileFullName").textContent = profile.name || "Student";
+  document.getElementById("profileDegree").textContent = degree;
+  document.getElementById("profileYear").textContent = profile.year || "Undergraduate";
+  document.getElementById("profileAvatar").textContent = (profile.name || "S").charAt(0).toUpperCase();
+
+  // Populate Assessment
+  if (assessment) {
+    document.getElementById("matchTitle").textContent = assessment.topCareer || "Career Match";
+    document.getElementById("matchScore").textContent = (assessment.score || 90) + "%";
+    document.getElementById("matchCategory").textContent = assessment.topCategory || "Technology";
+    document.getElementById("matchDesc").textContent = assessment.description || "Strong match based on your recent discovery assessment.";
+    document.getElementById("matchMeterBar").style.width = (assessment.score || 90) + "%";
+
+    if (assessment.secondaryCareer) {
+      document.getElementById("secondaryMatchText").textContent = 
+        `${assessment.secondaryCareer} (${assessment.secondaryScore || 80}% alignment)`;
+    }
+
+    if (assessment.skills && assessment.skills.length) {
+      document.getElementById("profileSkillTags").innerHTML = 
+        assessment.skills.map(s => `<span>${s}</span>`).join("");
+    }
+
+    if (assessment.categoryScores) {
+      const scores = assessment.categoryScores;
+      if (scores["Technology & AI"] !== undefined) {
+        document.getElementById("scoreTech").textContent = scores["Technology & AI"] + "%";
+        document.getElementById("meterTech").style.width = scores["Technology & AI"] + "%";
+      }
+      if (scores["Data Science"] !== undefined) {
+        document.getElementById("scoreData").textContent = scores["Data Science"] + "%";
+        document.getElementById("meterData").style.width = scores["Data Science"] + "%";
+      }
+      if (scores["UI/UX Design"] !== undefined) {
+        document.getElementById("scoreDesign").textContent = scores["UI/UX Design"] + "%";
+        document.getElementById("meterDesign").style.width = scores["UI/UX Design"] + "%";
+      }
+      if (scores["Product Strategy"] !== undefined) {
+        document.getElementById("scoreBusiness").textContent = scores["Product Strategy"] + "%";
+        document.getElementById("meterBusiness").style.width = scores["Product Strategy"] + "%";
+      }
+    }
+
+    document.getElementById("discussCareerBtn").href = 
+      `chatbot.html?v=5&career=${encodeURIComponent(assessment.topCareer)}`;
+    document.getElementById("assessmentActionText").textContent = "Retake Assessment";
+  } else {
+    document.getElementById("matchTitle").textContent = "Take Assessment";
+    document.getElementById("matchScore").textContent = "--";
+    document.getElementById("matchCategory").textContent = "Discovery Required";
+    document.getElementById("matchDesc").textContent = "Complete the 2-minute assessment to reveal your career compatibility match.";
+    document.getElementById("matchMeterBar").style.width = "0%";
+    document.getElementById("secondaryMatchText").textContent = "Pending quiz results";
+    document.getElementById("discussCareerBtn").href = "assessment.html?v=5";
+    document.getElementById("discussCareerBtn").textContent = "Start Career Quiz →";
+    document.getElementById("assessmentActionText").textContent = "Take Discovery Quiz";
+  }
+}
+
+// Modal handling
+const profileModal = document.getElementById("profileModal");
+const editBtn = document.getElementById("editProfileBtn");
+const saveBtn = document.getElementById("saveProfileBtn");
+
+if (editBtn) {
+  editBtn.onclick = () => {
+    const p = getUserProfile();
+    document.getElementById("inputStudentName").value = p.name || "";
+    document.getElementById("inputStudentDegree").value = p.degree || p.major || "";
+    document.getElementById("inputStudentYear").value = p.year || "3rd Year Undergraduate";
+    document.getElementById("inputStudentGoal").value = p.goal || "";
+    if (profileModal) profileModal.classList.add("open");
+  };
+}
+
+if (saveBtn) {
+  saveBtn.onclick = () => {
+    const name = document.getElementById("inputStudentName").value.trim() || "Student";
+    const degree = document.getElementById("inputStudentDegree").value.trim() || "Engineering Student";
+    const year = document.getElementById("inputStudentYear").value;
+    const goal = document.getElementById("inputStudentGoal").value.trim();
+
+    saveUserProfile({ name, degree, major: degree, year, goal });
+    if (profileModal) profileModal.classList.remove("open");
+    renderDashboard();
+  };
+}
+
+document.addEventListener("DOMContentLoaded", renderDashboard);
+</script>
+</body>
+</html>

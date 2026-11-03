@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Explore High-Impact Careers | Career Compass</title>
+  <link rel="stylesheet" href="css/style.css?v=5">
+</head>
+<body>
+<nav class="navbar">
+  <a class="logo" href="index.html?v=5">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor"></polygon>
+    </svg>
+    Career Compass
+  </a>
+  <div class="nav-links">
+    <a href="index.html?v=5">Home</a>
+    <a href="chatbot.html?v=5">AI Chat</a>
+    <a href="assessment.html?v=5">Assessment</a>
+    <a class="active" href="careers.html?v=5">Careers</a>
+    <a href="dashboard.html?v=5">Dashboard</a>
+  </div>
+  <a class="nav-user-chip" id="navUserChip" href="dashboard.html?v=5" title="View your dashboard">
+    <div class="nav-user-avatar">A</div>
+    <span class="nav-user-name">Alex</span>
+  </a>
+</nav>
+
+<main class="section careers-page">
+  <div class="center-heading">
+    <div class="eyebrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+      </svg>
+      Career Explorer
+    </div>
+    <h1>Explore High-Impact Career Trajectories</h1>
+    <p>Browse modern industry paths, required toolstacks, compensation benchmarks, and structured roadmaps.</p>
+  </div>
+
+  <div class="search-box">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+    <input id="careerSearch" placeholder="Search roles, e.g. Machine Learning, Product Design, Cloud Architecture...">
+  </div>
+
+  <div class="career-filters">
+    <button class="filter active" data-filter="all">All Disciplines</button>
+    <button class="filter" data-filter="technology">Technology & AI</button>
+    <button class="filter" data-filter="data">Data Science</button>
+    <button class="filter" data-filter="creative">UI/UX & Design</button>
+    <button class="filter" data-filter="business">Product & Strategy</button>
+  </div>
+
+  <div class="career-grid" id="careerGrid"></div>
+</main>
+
+<!-- Career Detail Slide-Over Drawer -->
+<div class="drawer-overlay" id="careerDrawer">
+  <div class="drawer-content">
+    <button class="drawer-close" id="closeDrawerBtn" type="button" aria-label="Close details">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    
+    <span class="drawer-badge" id="drawerCategory">Technology</span>
+    <h2 id="drawerTitle">AI / ML Engineer</h2>
+    <p class="drawer-desc" id="drawerDesc">Build intelligent software systems using predictive modeling, deep learning architectures, and production model serving.</p>
+
+    <div class="drawer-meta-grid">
+      <div class="drawer-meta-item">
+        <label>Expected Compensation</label>
+        <strong id="drawerSalary">$115k - $175k / yr</strong>
+      </div>
+      <div class="drawer-meta-item">
+        <label>Market Demand</label>
+        <strong id="drawerDemand">High Growth (28% YoY)</strong>
+      </div>
+    </div>
+
+    <div class="drawer-section">
+      <h4>Primary Technologies & Tools</h4>
+      <div class="skill-tags" id="drawerSkills"></div>
+    </div>
+
+    <div class="drawer-section">
+      <h4>Foundational Roadmap Milestones</h4>
+      <ul class="drawer-steps" id="drawerRoadmap"></ul>
+    </div>
+
+    <div style="margin-top: 32px;">
+      <a id="drawerChatBtn" href="chatbot.html" class="btn" style="width: 100%;">
+        Discuss This Career with AI Advisor
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+const careers = [
+  {
+    id: "ai-engineer",
+    name: "AI / ML Engineer",
+    cat: "technology",
+    iconClass: "career-icon-tech",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" y1="16" x2="8" y2="16"></line><line x1="16" y1="16" x2="16" y2="16"></line></svg>`,
+    desc: "Architect, fine-tune, and deploy intelligent machine learning systems and LLM pipelines into production applications.",
+    skills: ["Python", "PyTorch", "Hugging Face", "Docker", "FastAPI"],
+    salary: "$120,000 - $185,000",
+    level: "High Demand",
+    demand: "Extremely High (34% YoY growth)",
+    roadmap: [
+      "Master Python programming, Linear Algebra, and Multivariate Calculus",
+      "Implement core ML algorithms from scratch (Regression, Trees, Neural Nets)",
+      "Train & fine-tune open-source models using PyTorch & Hugging Face",
+      "Deploy scalable inference APIs with FastAPI and Docker on cloud infrastructure"
+    ]
+  },
+  {
+    id: "software-dev",
+    name: "Full Stack Software Engineer",
+    cat: "technology",
+    iconClass: "career-icon-tech",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
+    desc: "Build scalable end-to-end web applications, resilient backend architectures, and polished user-facing software.",
+    skills: ["TypeScript", "React / Next.js", "Node.js", "PostgreSQL", "Cloud"],
+    salary: "$95,000 - $155,000",
+    level: "High Demand",
+    demand: "Steady Growth (22% YoY)",
+    roadmap: [
+      "Master modern JavaScript/TypeScript, data structures, and algorithms",
+      "Build modular component-driven frontends with React & clean CSS",
+      "Design relational databases, normalization, and REST/GraphQL APIs",
+      "Implement CI/CD automated deployment pipelines and cloud infrastructure"
+    ]
+  },
+  {
+    id: "data-scientist",
+    name: "Data Scientist & Analyst",
+    cat: "data",
+    iconClass: "career-icon-data",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>`,
+    desc: "Extract actionable insights, statistical trends, and predictive business models from large-scale complex data pipelines.",
+    skills: ["Python", "SQL", "Pandas", "Scikit-Learn", "Tableau"],
+    salary: "$100,000 - $160,000",
+    level: "Fast Growing",
+    demand: "High Demand (25% YoY)",
+    roadmap: [
+      "Deep dive into statistical hypothesis testing and probability theory",
+      "Master advanced SQL querying, data cleaning, and aggregation techniques",
+      "Build regression, clustering, and classification models with Scikit-Learn",
+      "Synthesize data into executive storytelling dashboards with Tableau or PowerBI"
+    ]
+  },
+  {
+    id: "cybersecurity",
+    name: "Cybersecurity Architect",
+    cat: "technology",
+    iconClass: "career-icon-tech",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
+    desc: "Protect mission-critical networks, cloud workloads, and distributed enterprise software from sophisticated vulnerabilities.",
+    skills: ["Linux", "Networking", "Penetration Testing", "SIEM", "IAM"],
+    salary: "$110,000 - $170,000",
+    level: "Critical Need",
+    demand: "Very High (31% YoY)",
+    roadmap: [
+      "Master TCP/IP networking protocols, packet inspection, and Linux systems",
+      "Understand threat modeling, OWASP Top 10 vulnerabilities, and security auditing",
+      "Earn industry-recognized credentials (CompTIA Security+, CEH, or OSCP)",
+      "Configure modern SIEM log monitoring and cloud identity security posture"
+    ]
+  },
+  {
+    id: "ui-ux-designer",
+    name: "UI/UX Product Designer",
+    cat: "creative",
+    iconClass: "career-icon-design",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"></circle><circle cx="17.5" cy="10.5" r=".5"></circle><circle cx="8.5" cy="7.5" r=".5"></circle><circle cx="6.5" cy="12.5" r=".5"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2z"></path></svg>`,
+    desc: "Design intuitive user flows, interaction paradigms, and production design systems for web and mobile platforms.",
+    skills: ["Figma", "Design Systems", "User Research", "Wireframing", "Prototyping"],
+    salary: "$85,000 - $145,000",
+    level: "High Demand",
+    demand: "Steady Growth (18% YoY)",
+    roadmap: [
+      "Learn visual hierarchy, modern typography rules, and spatial spacing tokens",
+      "Master Figma components, auto-layout, interactive variants, and variables",
+      "Conduct user interviews, cognitive walkthroughs, and accessibility audits",
+      "Publish 3 in-depth case study portfolio pieces solving real user friction"
+    ]
+  },
+  {
+    id: "product-manager",
+    name: "Product Manager (Tech)",
+    cat: "business",
+    iconClass: "career-icon-business",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>`,
+    desc: "Define the product vision, roadmap priorities, and customer value metrics at the intersection of tech, design, and business.",
+    skills: ["Roadmapping", "Agile & Scrum", "User Analytics", "A/B Testing", "Strategy"],
+    salary: "$110,000 - $175,000",
+    level: "Competitive",
+    demand: "High Demand (20% YoY)",
+    roadmap: [
+      "Understand the software lifecycle and technical fundamentals",
+      "Learn customer discovery techniques and user story writing frameworks",
+      "Define North Star metrics, cohort analytics, and hypothesis-driven experimentation",
+      "Lead cross-functional sprints and ship a live MVP to measurable users"
+    ]
+  },
+  {
+    id: "growth-marketing",
+    name: "Growth & Product Marketing",
+    cat: "business",
+    iconClass: "career-icon-business",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>`,
+    desc: "Scale user adoption, retention funnels, and revenue acquisition through programmatic data experiments and campaigns.",
+    skills: ["Growth Analytics", "SEO & Content", "Lifecycle Email", "Funnel Optimization"],
+    salary: "$80,000 - $135,000",
+    level: "Fast Growing",
+    demand: "Moderate Growth (16% YoY)",
+    roadmap: [
+      "Master behavioral analytics tools (Mixpanel, PostHog, Google Analytics)",
+      "Design and execute multi-channel user acquisition campaigns",
+      "Optimize conversion funnels, signup flows, and activation loops",
+      "Analyze customer unit economics: LTV, CAC, and retention cohorts"
+    ]
+  },
+  {
+    id: "cloud-devops",
+    name: "Cloud & DevOps Architect",
+    cat: "technology",
+    iconClass: "career-icon-tech",
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>`,
+    desc: "Design scalable cloud infrastructure, automated delivery pipelines, and resilient Kubernetes clusters.",
+    skills: ["AWS / GCP", "Kubernetes", "Terraform", "CI/CD", "Prometheus"],
+    salary: "$115,000 - $180,000",
+    level: "High Demand",
+    demand: "Strong Growth (27% YoY)",
+    roadmap: [
+      "Master Linux systems engineering, bash scripting, and containerization",
+      "Define Infrastructure-as-Code using Terraform and CloudFormation",
+      "Orchestrate resilient microservices on Kubernetes clusters",
+      "Implement zero-downtime CI/CD deployments and Prometheus monitoring"
+    ]
+  }
+];
+
+const grid = document.getElementById("careerGrid");
+const search = document.getElementById("careerSearch");
+const drawer = document.getElementById("careerDrawer");
+const closeDrawerBtn = document.getElementById("closeDrawerBtn");
+
+function renderCards(list) {
+  grid.innerHTML = list.map(c => `
+    <article class="career-card" data-cat="${c.cat}">
+      <div class="career-card-top">
+        <div class="career-icon-wrap ${c.iconClass}">
+          ${c.svg}
+        </div>
+        <span class="career-level">${c.level}</span>
+      </div>
+      <h3>${c.name}</h3>
+      <p>${c.desc}</p>
+      
+      <div class="career-salary">
+        <span>Target:</span> ${c.salary}
+      </div>
+
+      <div class="skill-tags">
+        ${c.skills.slice(0, 3).map(s => `<span class="skill-tag">${s}</span>`).join("")}
+      </div>
+
+      <div class="career-card-actions">
+        <button class="btn btn-outline btn-small detail-btn" onclick="openCareerDrawer('${c.id}')" type="button">
+          Roadmap Details
+        </button>
+        <a href="chatbot.html?v=5&career=${encodeURIComponent(c.name)}" title="Discuss in AI Chat">
+          Ask AI →
+        </a>
+      </div>
+    </article>
+  `).join("");
+}
+
+function openCareerDrawer(careerId) {
+  const item = careers.find(x => x.id === careerId);
+  if (!item) return;
+
+  document.getElementById("drawerCategory").textContent = item.cat.toUpperCase();
+  document.getElementById("drawerTitle").textContent = item.name;
+  document.getElementById("drawerDesc").textContent = item.desc;
+  document.getElementById("drawerSalary").textContent = item.salary + " / yr";
+  document.getElementById("drawerDemand").textContent = item.demand;
+  
+  document.getElementById("drawerSkills").innerHTML = 
+    item.skills.map(s => `<span class="skill-tag">${s}</span>`).join("");
+
+  document.getElementById("drawerRoadmap").innerHTML = 
+    item.roadmap.map(step => `<li>${step}</li>`).join("");
+
+  document.getElementById("drawerChatBtn").href = 
+    `chatbot.html?v=5&career=${encodeURIComponent(item.name)}`;
+
+  const drawerEl = document.getElementById("careerDrawer") || document.getElementById("careerDrawerOverlay");
+  if (drawerEl) drawerEl.classList.add("open");
+}
+
+document.querySelectorAll("#closeDrawerBtn, #drawerCloseBtn, [data-close-drawer]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const drawerEl = document.getElementById("careerDrawer") || document.getElementById("careerDrawerOverlay");
+    if (drawerEl) drawerEl.classList.remove("open");
+  });
+});
+
+renderCards(careers);
+
+// Category filtering
+document.querySelectorAll(".filter").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll(".filter").forEach(x => x.classList.remove("active"));
+    btn.classList.add("active");
+    const filter = btn.dataset.filter;
+    const filtered = filter === "all" ? careers : careers.filter(c => c.cat === filter);
+    renderCards(filtered);
+  };
+});
+
+// Real-time search
+search.oninput = () => {
+  const q = search.value.toLowerCase().trim();
+  const matched = careers.filter(c => 
+    (c.name + " " + c.desc + " " + c.skills.join(" ")).toLowerCase().includes(q)
+  );
+  renderCards(matched);
+};
+</script>
+<script src="js/main.js?v=5"></script>
+</body>
+</html>

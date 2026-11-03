@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Career Discovery Assessment | Career Compass</title>
+  <link rel="stylesheet" href="css/style.css?v=5">
+</head>
+<body>
+<nav class="navbar">
+  <a class="logo" href="index.html?v=5">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor"></polygon>
+    </svg>
+    Career Compass
+  </a>
+  <div class="nav-links">
+    <a href="index.html?v=5">Home</a>
+    <a href="chatbot.html?v=5">AI Chat</a>
+    <a class="active" href="assessment.html?v=5">Assessment</a>
+    <a href="careers.html?v=5">Careers</a>
+    <a href="dashboard.html?v=5">Dashboard</a>
+  </div>
+  <a class="nav-user-chip" id="navUserChip" href="dashboard.html?v=5" title="View your dashboard">
+    <div class="nav-user-avatar">A</div>
+    <span class="nav-user-name">Alex</span>
+  </a>
+</nav>
+
+<main class="assessment-page">
+  <div class="center-heading">
+    <div class="eyebrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04z"></path>
+        <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"></path>
+      </svg>
+      Career Discovery Assessment
+    </div>
+    <h1>Uncover your ideal career trajectory</h1>
+    <p>Answer 6 targeted questions based on how you naturally think, solve problems, and prefer to work.</p>
+  </div>
+
+  <div class="progress"><span id="progressBar"></span></div>
+
+  <div class="assessment-card">
+    <div id="questionArea"></div>
+    <div class="assessment-actions" id="assessmentActions">
+      <button class="btn btn-outline" id="prevBtn" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Previous
+      </button>
+      <button class="btn" id="nextBtn" type="button">
+        Next
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
+    </div>
+  </div>
+</main>
+
+<script src="js/main.js?v=5"></script>
+<script src="js/assessment.js?v=5"></script>
+</body>
+</html>

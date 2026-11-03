@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>AI Career Advisor | Career Compass</title>
+  <link rel="stylesheet" href="css/style.css?v=5">
+</head>
+<body>
+<nav class="navbar">
+  <a class="logo" href="index.html?v=5">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor"></polygon>
+    </svg>
+    Career Compass
+  </a>
+  <div class="nav-links">
+    <a href="index.html?v=5">Home</a>
+    <a class="active" href="chatbot.html?v=5">AI Chat</a>
+    <a href="assessment.html?v=5">Assessment</a>
+    <a href="careers.html?v=5">Careers</a>
+    <a href="dashboard.html?v=5">Dashboard</a>
+  </div>
+  <a class="nav-user-chip" id="navUserChip" href="dashboard.html?v=5" title="View your dashboard">
+    <div class="nav-user-avatar">A</div>
+    <span class="nav-user-name">Alex</span>
+  </a>
+</nav>
+
+<main class="chat-page">
+  <div class="chat-header">
+    <div class="ai-avatar">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+      </svg>
+    </div>
+    <div>
+      <div class="online"><span></span> AI Career Advisor</div>
+      <h1>Chat with Career Compass</h1>
+      <p>Ask anything about specialized roadmaps, skills acquisition, higher education, or interview prep.</p>
+    </div>
+    <div class="api-key-badge">
+      <button class="api-key-btn" id="apiKeyBtn" type="button" style="display:none" title="Configure Gemini API Key">
+        <span class="api-status-dot" id="apiStatusDot"></span>
+        <span id="apiKeyBtnText">Gemini API</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="chat-layout">
+    <aside class="chat-sidebar">
+      <h3>Curated Inquiries</h3>
+      <button class="suggestion">Which career best suits my problem-solving style?</button>
+      <button class="suggestion">I enjoy coding. What roadmap should I follow?</button>
+      <button class="suggestion">How do I become an AI / Machine Learning engineer?</button>
+      <button class="suggestion">How do I transition from Software to Product Management?</button>
+      <button class="suggestion">What are the most sought-after technical skills in 2026?</button>
+      
+      <div class="tip-box">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18h6"></path><path d="M10 22h4"></path>
+          <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path>
+        </svg>
+        <p><b>Pro-tip:</b> Mention your current degree, favorite technologies, and long-term ambitions for customized roadmaps.</p>
+      </div>
+    </aside>
+
+    <section class="chat-box">
+      <div class="messages" id="messages">
+        <div class="message bot">
+          <div class="msg-avatar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <div>
+            <div class="msg-name">Career Compass</div>
+            <div class="bubble" id="welcomeBubble">
+              Welcome to Career Compass. I am your specialized AI advisor for technical and professional career trajectories. Tell me about your background, goals, or current doubts to start building your roadmap.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-row">
+        <button class="quick" type="button">Career options</button>
+        <button class="quick" type="button">Learning roadmap</button>
+        <button class="quick" type="button">My strengths</button>
+      </div>
+
+      <form class="chat-input" id="chatForm">
+        <input id="userInput" type="text" placeholder="Ask about career paths, skills, or interview preparation..." autocomplete="off">
+        <button type="submit" aria-label="Send message">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+      
+      <div class="disclaimer">Career Compass provides structured educational guidance. Confirm university and licensing criteria with authoritative academic institutions.</div>
+    </section>
+  </div>
+</main>
+
+<!-- API Key Configuration Modal -->
+<div class="modal-overlay" id="apiKeyModal">
+  <div class="modal-card">
+    <h3>Gemini API Configuration</h3>
+    <p>Your API key is stored locally in browser storage (<code>localStorage</code>) and is never transmitted to any central database or committed to Git.</p>
+    <div class="form-group">
+      <label for="apiKeyInput">Gemini API Key</label>
+      <input type="password" id="apiKeyInput" placeholder="Paste your Gemini API key (AQ... or AIza...)" autocomplete="off">
+    </div>
+    <div class="modal-btns">
+      <button class="btn btn-outline btn-small" id="clearKeyBtn" type="button">Clear Key</button>
+      <button class="btn btn-outline btn-small" id="closeKeyModalBtn" type="button">Cancel</button>
+      <button class="btn btn-small" id="saveKeyBtn" type="button">Save Settings</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js?v=5"></script>
+<script src="js/chatbot.js?v=7"></script>
+</body>
+</html>
